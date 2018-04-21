@@ -1,0 +1,97 @@
+<body id="app-web">
+    <header class="w3-padding-16 w3-center">
+        <h1 class="Aldrich"><b>{{title}}</b></h1>
+        <p class="w3-large">System CRUD with ExpressJS and MongoDB</p>
+        <p>JSON & AJAX</p>
+    </header>
+
+    <main class="grid-container">
+        <section class="w3-border item1">
+            <div class="w3-container w3-blue">
+                <h3><b>Create Document</b></h3>
+            </div>
+            <form class="w3-container">
+                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Nro Documento" name="SavetxtNDoc" id="SavetxtNDoc" required="required"> </p>
+                <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Nombre" name="SavetxtNom" id="SavetxtNom" required="required"></p>
+                <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Apellido" name="SavetxtApe" id="SavetxtApe" required="required"></p>
+                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Edad" name="SavetxtEdad" id="SavetxtEdad" required="required"></p>
+                <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Pais (Opcional)" name="SavetxtPais" id="SavetxtPais"></p>
+                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Telefono (Opcional)" name="SavetxtTel" id="SavetxtTel"></p>
+                <p><button type="button" class="w3-button w3-block w3-blue" onclick="CreateDoc()">Save</button></p>
+            </form>
+        </section>
+
+        <section class="w3-border item2">
+            <div class="w3-container w3-green">
+                <h3><b>Update Document</b></h3>
+            </div>
+            <form class="w3-container">
+                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Nro Documento" name="UpdtxtNDoc" id="UpdtxtNDoc" required="required"> </p>
+                <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Nombre" name="UpdtxtNom" id="UpdtxtNom" required="required"></p>
+                <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Apellido" name="UpdtxtApe" id="UpdtxtApe" required="required"></p>
+                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Edad" name="UpdtxtEdad" id="UpdtxtEdad" required="required"></p>
+                <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Pais (Opcional)" name="UpdtxtPais" id="UpdtxtPais"></p>
+                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Telefono (Opcional)" name="UpdtxtTel" id="UpdtxtTel"></p>
+                <p><button type="button" class="w3-button w3-block w3-green" onclick="UpdateDoc()">Update</button></p>
+            </form>
+        </section>
+        
+
+        <section class="w3-border item3">
+            <div class="w3-container w3-red">
+                <h3><b>Delete Document</b></h3>
+            </div>
+            <form class="w3-container">
+                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Nro Documento" name="DeltxtNDoc" id="DeltxtNDoc" required="required"> </p>
+                <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Nombre" name="DeltxtNom" id="DeltxtNom" required="required"></p>
+                <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Apellido" name="DeltxtApe" id="DeltxtApe" required="required"></p>
+                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Edad" name="DeltxtEdad" id="DeltxtEdad" required="required"></p>
+                <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Pais (Opcional)" name="DeltxtPais" id="DeltxtPais"></p>
+                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Telefono (Opcional)" name="DeltxtTel" id="DeltxtTel"></p>
+                <p><button type="button" class="w3-button w3-block w3-red" onclick="DeleteDoc()">Delete</button></p>
+            </form>
+        </section>
+                  
+        <section class="item4">
+            <p><input oninput="w3.filterHTML('#Table', '.item', this.value)" class="w3-block w3-input w3-border" placeholder="Buscar"></p>
+            <div class="w3-responsive">    
+                <table class="w3-table-all w3-hoverable" id="Table">
+                    <thead id="Thead">
+                        <tr class="w3-blue-gray">
+                            <th>Nro Documento</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Edad</th>
+                            <th>Pais</th>
+                            <th>Telefono</th>                            
+                        </tr>
+                    </thead>
+                    <div id="Tdata">
+                        {{#each records}}
+                        <tr class="item">
+                            <td>{{ndocumento}}</td>
+                            <td>{{nombre}}</td>
+                            <td>{{apellido}}</td>
+                            <td>{{edad}}</td>
+                            <td>{{pais}}</td>
+                            <td>{{telefono}}</td>                            
+                        </tr>
+                        {{/each}}
+                    </div>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <br>
+    
+    <footer class="w3-container w3-dark-gray w3-padding-16">
+        <h3 class="w3-center">Powered By: Jaison Mora Mora</h3>
+        <p class="w3-center">Follow me: </p>
+        <div class="w3-bar w3-center">
+            <a href="https://github.com/JasonMoraMora" target="_blank">
+                <i class="fa fa-github w3-jumbo" aria-hidden="true"></i>    
+            </a>
+        </div>
+    </footer>
+</body>
