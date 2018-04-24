@@ -36,48 +36,57 @@ function UpdateDoc(){
             document.getElementById("app-web").innerHTML = this.responseText;            
         }
     };
-    xhttp.open("POST", "createDoc", true);
+    xhttp.open("POST", "updateDoc", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('items='+myJSON);
 }
 
+function DeleteDoc(){
+    var NDoc = parseInt(document.getElementById('DeltxtNDoc').value);        
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {        
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("app-web").innerHTML = this.responseText;            
+        }
+    };
+    xhttp.open("POST", "deteteDoc", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send('NDoc='+NDoc);
+}
+
 //LOAD FORM ( UPDATE & DELETE )
 function loadDocToUpd() {
-    var NDoc = document.getElementById('UpdtxtNDoc').value;
+    var NDoc = parseInt(document.getElementById('UpdtxtNDoc').value);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var obj = JSON.parse(this.responseText);
-            document.getElementById('txtNomToUpd').value = obj.nombre;
-            document.getElementById('txtApeToUpd').value = obj.apellido;
-            document.getElementById('txtEdadToUpd').value = obj.edad;
-            document.getElementById('txtDirToUpd').value = obj.direccion;
-            document.getElementById('txtTelToUpd').value = obj.telefono;
-            document.getElementById('txtCelToUpd').value = obj.celular;
-            document.getElementById('txtHobToUpd').value = obj.hoobie;
+            var MyObj = JSON.parse(this.responseText);
+            document.getElementById('UpdtxtNom').value = MyObj.nombre;
+            document.getElementById('UpdtxtApe') .value = MyObj.apellido;
+            document.getElementById('UpdtxtEdad').value = MyObj.edad;
+            document.getElementById('UpdtxtPais').value = MyObj.pais;
+            document.getElementById('UpdtxtTel').value = MyObj.telefono;            
         }
     };
-    xhttp.open("POST", "DocToUpd", true);
+    xhttp.open("POST", "SearchDocToUpd", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("NDoc=" + NDoc);
 }
 
 function loadDocToDel() {
-    var NDoc = document.getElementById('findNDocToDel').value;
+    var NDoc = parseInt(document.getElementById('DeltxtNDoc').value);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var obj = JSON.parse(this.responseText);
-            document.getElementById('txtNomToDel').value = obj.nombre;
-            document.getElementById('txtApeToDel').value = obj.apellido;
-            document.getElementById('txtEdadToDel').value = obj.edad;
-            document.getElementById('txtDirToDel').value = obj.direccion;
-            document.getElementById('txtTelToDel').value = obj.telefono;
-            document.getElementById('txtCelToDel').value = obj.celular;
-            document.getElementById('txtHobToDel').value = obj.hoobie;
+            var MyObj = JSON.parse(this.responseText);
+            document.getElementById('DeltxtNom').value = MyObj.nombre;
+            document.getElementById('DeltxtApe') .value = MyObj.apellido;
+            document.getElementById('DeltxtEdad').value = MyObj.edad;
+            document.getElementById('DeltxtPais').value = MyObj.pais;
+            document.getElementById('DeltxtTel').value = MyObj.telefono;            
         }
     };
-    xhttp.open("POST", "DocToDel", true);
+    xhttp.open("POST", "SearchDocToDel", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("NDoc=" + NDoc);
 }

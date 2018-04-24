@@ -6,6 +6,7 @@
     </header>
 
     <main class="grid-container">
+        <!--Crear-->
         <section class="w3-border item1">
             <div class="w3-container w3-blue">
                 <h3><b>Create Document</b></h3>
@@ -21,12 +22,18 @@
             </form>
         </section>
 
+        <!--Actualizar-->
         <section class="w3-border item2">
             <div class="w3-container w3-green">
                 <h3><b>Update Document</b></h3>
             </div>
             <form class="w3-container">
-                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Nro Documento" name="UpdtxtNDoc" id="UpdtxtNDoc" required="required"> </p>
+                <p>
+                    <input list="listNdocUpd" class="w3-input w3-border" placeholder="Buscar con Nro Documento" name="UpdtxtNDoc" id="UpdtxtNDoc" required="required" onkeypress="loadDocToUpd()">
+                    <datalist id="listNdocUpd">
+                        {{#each records}}<option value="{{ndocumento}}"></option>{{/each}}
+                    </datalist>
+                </p>
                 <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Nombre" name="UpdtxtNom" id="UpdtxtNom" required="required"></p>
                 <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Apellido" name="UpdtxtApe" id="UpdtxtApe" required="required"></p>
                 <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Edad" name="UpdtxtEdad" id="UpdtxtEdad" required="required"></p>
@@ -36,13 +43,18 @@
             </form>
         </section>
         
-
+        <!--Borrar-->
         <section class="w3-border item3">
             <div class="w3-container w3-red">
                 <h3><b>Delete Document</b></h3>
             </div>
             <form class="w3-container">
-                <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Nro Documento" name="DeltxtNDoc" id="DeltxtNDoc" required="required"> </p>
+                <p>
+                    <input list="listNdocDel" class="w3-input w3-border" placeholder="Buscar con Nro Documento" name="DeltxtNDoc" id="DeltxtNDoc" required="required" onkeypress="loadDocToDel()">
+                    <datalist id="listNdocDel">
+                        {{#each records}}<option value="{{ndocumento}}"></option>{{/each}}
+                    </datalist>
+                </p>
                 <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Nombre" name="DeltxtNom" id="DeltxtNom" required="required"></p>
                 <p><input type="text" class="w3-input w3-border" placeholder="Ingresar Apellido" name="DeltxtApe" id="DeltxtApe" required="required"></p>
                 <p><input type="number" class="w3-input w3-border" placeholder="Ingresar Edad" name="DeltxtEdad" id="DeltxtEdad" required="required"></p>
@@ -51,7 +63,8 @@
                 <p><button type="button" class="w3-button w3-block w3-red" onclick="DeleteDoc()">Delete</button></p>
             </form>
         </section>
-                  
+        
+        <!--Leer-->
         <section class="item4">
             <p><input oninput="w3.filterHTML('#Table', '.item', this.value)" class="w3-block w3-input w3-border" placeholder="Buscar"></p>
             <div class="w3-responsive">    

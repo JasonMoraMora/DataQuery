@@ -58,9 +58,81 @@ app.post('/createDoc', (req, res)=>{
         var db = client.db(dbName);
         db.collection('Information').find({}).toArray((err, result)=>{
             test.equal(null, err);
+            console.log(result);
             res.render('index', {title: 'DataQuery', records: result});
             client.close();
         });   
+    });
+});
+
+app.post('/updateDoc', (req, res)=>{
+    var MyObj = JSON.parse(req.body.items);    
+    var query = { ndocumento: MyObj.ndocumento };        
+    var newValues = { $set : MyObj};
+    MongoClient.connect(url, function(err, client) {
+        test.equal(null, err);
+        var db = client.db(dbName);
+        db.collection('Information').updateOne(query, newValues, (err, result)=>{
+            test.equal(null, err);
+            console.log('Datos actualizados');
+            client.close();
+        });
+    });
+    MongoClient.connect(url, function(err, client) {
+        test.equal(null, err);
+        var db = client.db(dbName);
+        db.collection('Information').find({}).toArray((err, result)=>{
+            test.equal(null, err);
+            res.render('index', {title: 'DataQuery', records: result});
+            client.close();
+        });
+    });
+});
+
+app.post('/deteteDoc', (req, res)=>{
+    var MyObj = JSON.parse(req.body.NDoc);   
+    var query = { ndocumento : MyObj };         
+    MongoClient.connect(url, function(err, client) {
+        test.equal(null, err);
+        var db = client.db(dbName);
+        db.collection('Information').deleteOne(query, (err, result)=>{
+            test.equal(null, err);
+            console.log('Datos Eliminados correctamente');
+            client.close();
+        });
+    });
+    MongoClient.connect(url, function(err, client) {
+        test.equal(null, err);
+        var db = client.db(dbName);
+        db.collection('Information').find({}).toArray((err, result)=>{
+            test.equal(null, err);
+            res.render('index', {title: 'DataQuery', records: result});
+            client.close();
+        });
+    });
+});
+
+app.post('/SearchDocToUpd', (req, res)=>{    
+    var NDoc = parseInt(req.body.NDoc);
+    var query = { ndocumento: NDoc };
+    MongoClient.connect(url, (err, client)=> {    
+        test.equal(null, err);
+        var db = client.db(dbName);
+        db.collection("Information").findOne(query, (err, result)=>{
+            res.send(result);
+        });        
+    });
+});
+
+app.post('/SearchDocToDel', (req, res)=>{    
+    var NDoc = parseInt(req.body.NDoc);
+    var query = { ndocumento: NDoc };
+    MongoClient.connect(url, (err, client)=> {    
+        test.equal(null, err);
+        var db = client.db(dbName);
+        db.collection("Information").findOne(query, (err, result)=>{
+            res.send(result);
+        });        
     });
 });
 
