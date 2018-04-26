@@ -31,7 +31,7 @@ Tener instalado en tu pc Mongodb, NodeJS y npm
 
 ### Instalar y ejecutar proyecto
 
-Paso 1
+##### Paso 1
 Descargar el paquete como Zip desde el repo de github 
 [Link del repositorio](https://www.google.com)
 
@@ -39,13 +39,13 @@ O en todo caso clonar desde el mismo git
 ```
 git clone https://github.com/JasonMoraMora/DataQuery.git
 ```
-Paso 2
+##### Paso 2
 Correr el motor de base de datos
 ```
 sudo service mongod start
 ```
 
-Paso 3
+##### Paso 3
 Dirigirnos al directorio de la aplicacion a travez de la terminal o la consola de comandos de windows y ejecutar el siguiente comando 
 ```
 npm start
@@ -56,11 +56,9 @@ Servidor web iniciado en el puerto 3000
 Connected successfully to server
 ```
 
-Paso 4
+##### Paso 4
 Abrir un navegador y escribir en la url localhost:3000
 
 Imagen de como es el sistema
 Dale click en la imagen y nos rediccionara a un video en youtube explicando su uso
 [![CRUD](miniatura.png)](https://www.youtube.com/watch?v=2cmnTNtvb1c)
-
-Saludos. 
