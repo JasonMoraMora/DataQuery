@@ -30,7 +30,7 @@
             </div>
             <form class="w3-container">
                 <p>
-                    <input list="listNdocUpd" class="w3-input w3-border" placeholder="Buscar con Nro Documento" name="UpdtxtNDoc" id="UpdtxtNDoc" required="required" onkeypress="loadDocToUpd()">
+                    <input list="listNdocUpd" class="w3-input w3-border" placeholder="Buscar con Nro Documento" name="UpdtxtNDoc" id="UpdtxtNDoc" required="required" onkeypress="loadDocToUpd(event)">
                     <datalist id="listNdocUpd">
                         {{#each records}}<option value="{{ndocumento}}"></option>{{/each}}
                     </datalist>
@@ -51,7 +51,7 @@
             </div>
             <form class="w3-container">
                 <p>
-                    <input list="listNdocDel" class="w3-input w3-border" placeholder="Buscar con Nro Documento" name="DeltxtNDoc" id="DeltxtNDoc" required="required" onkeypress="loadDocToDel()">
+                    <input list="listNdocDel" class="w3-input w3-border" placeholder="Buscar con Nro Documento" name="DeltxtNDoc" id="DeltxtNDoc" required="required" onkeypress="loadDocToDel(event)">
                     <datalist id="listNdocDel">
                         {{#each records}}<option value="{{ndocumento}}"></option>{{/each}}
                     </datalist>
@@ -67,9 +67,9 @@
         
         <!--Leer-->
         <section class="item4">
-            <p><input oninput="w3.filterHTML('#Table', '.item', this.value)" class="w3-block w3-input w3-border" placeholder="Buscar"></p>
+            <p><input type="text" oninput="w3.filterHTML('#myTable', '.item', this.value)" class="w3-block w3-input w3-border" placeholder="Buscar datos por cualquier tipo de valor"></p>
             <div class="w3-responsive">    
-                <table class="w3-table-all w3-hoverable" id="Table">
+                <table class="w3-table-all w3-hoverable" id="myTable">
                     <thead id="Thead">
                         <tr class="w3-blue-gray">
                             <th>Nro Documento</th>
@@ -79,9 +79,8 @@
                             <th>Pais</th>
                             <th>Telefono</th>                            
                         </tr>
-                    </thead>
-                    <div id="Tdata">
-                        {{#each records}}
+                    </thead>                    
+                    {{#each records}}
                         <tr class="item">
                             <td>{{ndocumento}}</td>
                             <td>{{nombre}}</td>
@@ -90,8 +89,7 @@
                             <td>{{pais}}</td>
                             <td>{{telefono}}</td>                            
                         </tr>
-                        {{/each}}
-                    </div>
+                    {{/each}}                    
                 </table>
             </div>
         </section>
